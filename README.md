@@ -154,3 +154,36 @@ provide('message', message)
 import { inject } from 'vue'
 const message = inject('message')
 ```
+
+## Using store (Vuex)
+#### Options API
+Options API give us access to $store variable that can be used in `<template>` as well as `<script>`
+```
+this.$store.dispatch('someMethod')
+```
+#### Composition API
+In Composition API we don't have access to this. Instead we use `useStore` API
+```
+import { useStore } from 'vue';
+const store = useStore();
+store.dispatch('someMethod');
+```
+
+## Using router
+#### Options API
+Options API give us access to $router & $route variable that can be used in `<template>` as well as `<script>`
+```
+this.$router.push('/url');
+this.$route.params.id;
+```
+#### Composition API
+In Composition API we don't have access to this. Instead we use `useRoute` and `useRouter` APIs
+```
+import { useRouter, useRoute } from 'vue'
+const route = useRoute();
+const router = useRouter();
+
+const parameter_id = route.params.id;
+router.push('/url');
+```
+
